@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Te Adoro, Baixinha</title>
+    <title>Te Odeio para Te Adoro</title>
     <style>
         body {
             display: flex;
@@ -15,14 +15,39 @@
             font-family: Arial, sans-serif;
         }
 
+        .container {
+            text-align: center;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 20px;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: darkred;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: gray;
+        }
+
         .heart {
+            display: none;
             width: 100px;
             height: 100px;
             background-color: red;
             position: relative;
             transform: rotate(-45deg);
-            animation: pulse 1.5s infinite;
-            margin-top: 50px;
+            margin-top: 20px;
         }
 
         .heart::before,
@@ -53,32 +78,25 @@
             color: white;
             font-weight: bold;
             font-size: 16px;
-            opacity: 0;
-            animation: fadeIn 2s forwards 1.5s;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1) rotate(-45deg);
-            }
-            50% {
-                transform: scale(1.1) rotate(-45deg);
-            }
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+             z-index: 999;
         }
     </style>
 </head>
 <body>
-    <div class="heart">
-        <div class="text">Te adoro, baixinha</div>
+    <div class="container">
+        <button class="button" onclick="showHeart()">Te odeio</button>
+        <div class="message">não vou te hackear</div>
+        <div class="heart" id="heart">
+            <div class="text">Te adoro, baixinha</div>
+        </div>
     </div>
+
+    <script>
+        function showHeart() {
+            document.querySelector('.button').style.display = 'none';
+            document.querySelector('.message').style.display = 'none';
+            document.getElementById('heart').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
