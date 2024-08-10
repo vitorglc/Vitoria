@@ -48,6 +48,7 @@
             position: relative;
             transform: rotate(-45deg);
             margin-top: 20px;
+            animation: pulse 1s infinite;
         }
 
         .heart::before,
@@ -72,13 +73,26 @@
 
         .text {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 40%;
+            left: 70%;
             transform: translate(-50%, -50%) rotate(45deg);
             color: white;
             font-weight: bold;
             font-size: 16px;
-             z-index: 999;
+            z-index: 999;
+            display: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1) rotate(-45deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(-45deg);
+            }
+            100% {
+                transform: scale(1) rotate(-45deg);
+            }
         }
     </style>
 </head>
@@ -86,8 +100,8 @@
     <div class="container">
         <button class="button" onclick="showHeart()">Te odeio</button>
         <div class="message">não vou te hackear</div>
-        <div class="heart" id="heart">
-            <div class="text">Te adoro, baixinha</div>
+        <div class="heart" id="heart" onclick="showText()">
+            <div class="text" id="heartText">Te adoro, baixinha</div>
         </div>
     </div>
 
@@ -96,6 +110,10 @@
             document.querySelector('.button').style.display = 'none';
             document.querySelector('.message').style.display = 'none';
             document.getElementById('heart').style.display = 'block';
+        }
+
+        function showText() {
+            document.getElementById('heartText').style.display = 'block';
         }
     </script>
 </body>
